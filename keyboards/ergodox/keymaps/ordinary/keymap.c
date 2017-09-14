@@ -22,14 +22,14 @@
 #define GrtEq 17 // >= macro
 #define LesEq 18 // <= macro
 #define DeRef 19 // -> macro
+#define Asig  20 // <- macro
 
-#define MUL   20 // mouse up left
-#define MUR   21 // mouse up right
-#define MDL   22 // mouse down left
-#define MDR   23 // mouse down right
+#define MUL   21 // mouse up left
+#define MUR   22 // mouse up right
+#define MDL   23 // mouse down left
+#define MDR   24 // mouse down right
 
-
-
+#define RGB_SLD 25
 /*
  * The Ordinary Layout for the Ergodox EZ keyboard, v5
  *
@@ -57,7 +57,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------------+------+------+------+------+------|Shift |       | Tab  |------+------+------+------+------+------------|
  * | Capitals   |   Z  |   X  |   C  |   V  |   B  | -Tab |       |      |   N  |   M  |   ,  |   .  |  /   |   Capitals |
  * `------------+------+------+------+------+-------------'       `-------------+------+------+------+------+------------'
- *      | LCtrl | Meh  |Hyper | LAlt | LGui |                                   | RGui | RAlt | Hyper|  Meh | RCtrl |
+ *      | LCtrl | Meh  |Hyper | LGui | LAlt |                                   | RAlt | RGui | Hyper|  Meh | RCtrl |
  *      `-----------------------------------'                                   `-----------------------------------'
  *                                          ,-------------.       ,-------------.
  *                                          | Home | End  |       | Left | Right|
@@ -73,7 +73,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ,F(LMdia)  ,KC_Q           ,KC_W   ,KC_E   ,KC_R  ,KC_T  ,KC_LBRC
 ,M(LSymb)  ,LT(RBASE, KC_A),KC_S   ,KC_D   ,LT(RBASE, KC_F)  ,KC_G
 ,KC_LSFT   ,KC_Z           ,KC_X   ,KC_C   ,KC_V  ,KC_B  ,LSFT(KC_TAB)
-,KC_LCTL   ,MEH_T(KC_NO)   ,ALL_T(KC_NO),KC_LALT,KC_LGUI
+,KC_LCTL   ,MEH_T(KC_NO)   ,ALL_T(KC_NO),KC_LGUI,KC_LALT
                                          ,KC_HOME,KC_END
                                                  ,KC_PGUP
                                  ,KC_BSPC,KC_DEL ,KC_PGDN
@@ -82,7 +82,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                                  ,KC_RBRC ,KC_Y ,KC_U           ,KC_I   ,KC_O   ,KC_P             ,F(RMdia)
                                                                           ,KC_H ,LT(RBASE, KC_J),KC_K   ,KC_L   ,LT(RBASE,KC_SCLN),F(RSymb)
                                                                  ,KC_TAB  ,KC_N ,KC_M           ,KC_COMM,KC_DOT ,KC_SLSH          ,KC_RSFT
-                                                                                ,KC_RGUI        ,KC_RALT,KC_HYPR,KC_MEH           ,KC_RCTL
+                                                                                ,KC_RALT        ,KC_RGUI,KC_HYPR,KC_MEH           ,KC_RCTL
                                                                  ,KC_LEFT ,KC_RGHT
                                                                  ,KC_UP
                                                                  ,KC_DOWN ,KC_ENT ,KC_SPC
@@ -104,7 +104,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                         ,-------------.       ,-------------.
  *                                         | |||| | |||| |       | |||| | |||| |
  *                                  ,------|------|------|       |------+------+------.
- *                                  | Plus | Equal| |||| |       | |||| | Under| Dash |
+ *                                  | Plus | Equal| |||| |       |  <-  | Under| Dash |
  *                                  |      |      |------|       |------| Score|      |
  *                                  |  +   |   =  |  !=  |       |  ->  |  _   |  -   |
  *                                  `--------------------'       `--------------------'
@@ -126,7 +126,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                                  ,LSFT(KC_QUOT),KC_BSLS     ,KC_1  ,KC_2   ,KC_3  ,KC_MINS ,KC_TRNS
                                                                                             ,KC_0  ,KC_DOT ,KC_EQL,KC_PLUS ,KC_ENT
                                                                  ,KC_NO       ,KC_NO
-                                                                 ,KC_NO
+                                                                 ,M(Asig)
                                                                  ,M(DeRef)    ,LSFT(KC_MINS),KC_MINS
 ),
 
@@ -186,10 +186,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *      |        |      |      |      |      |                                |      |      |      |      |        |
  *      `------------------------------------'                                `------------------------------------'
  *                                         ,-------------.     ,-------------.
- *                                         |      |      |     |      |      |
+ *                                         |      |  TOG |     |  TOG |      |
  *                                  ,------|------|------|     |------+------+------.
  *                                  |      |      |      |     |      |      |      |
- *                                  |      |      |------|     |------|      |      |
+ *                                  |  VAD |  VAI |------|     |------|  MOD |  SLD |
  *                                  |      |      |      |     |      |      |      |
  *                                  `--------------------'     `--------------------'
  */
@@ -200,18 +200,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ,KC_TRNS ,KC_TRNS ,KC_TRNS ,KC_TRNS ,KC_TRNS ,KC_TRNS
 ,KC_CAPS ,KC_TRNS ,KC_TRNS ,KC_TRNS ,KC_TRNS ,KC_TRNS ,KC_TRNS
 ,KC_TRNS ,KC_TRNS ,KC_TRNS ,KC_TRNS ,KC_TRNS
-                                             ,KC_TRNS ,KC_TRNS
-                                                      ,KC_TRNS
-                                     ,KC_TRNS,KC_TRNS ,KC_TRNS
+                                             ,RGB_TOG ,RGB_TOG
+                                                      ,RGB_TOG
+                                     ,RGB_VAD,RGB_VAI ,RGB_TOG
                                                              // right hand
                                                              ,KC_TRNS ,KC_TRNS ,KC_TRNS ,KC_TRNS ,KC_MINS ,KC_BSPC ,KC_TRNS
                                                              ,KC_TRNS ,KC_TRNS ,KC_TRNS ,KC_TRNS ,KC_LBRC ,KC_RBRC ,KC_TRNS
                                                                       ,KC_TRNS ,KC_TRNS ,KC_TRNS ,KC_TRNS ,KC_TRNS ,KC_TRNS
                                                              ,KC_TRNS ,KC_TRNS ,KC_TRNS ,KC_TRNS ,KC_TRNS ,KC_TRNS ,KC_CAPS
                                                                                ,KC_TRNS ,KC_TRNS ,KC_TRNS ,KC_TRNS ,KC_TRNS
-                                                             ,KC_TRNS ,KC_TRNS
-                                                             ,KC_TRNS
-                                                             ,KC_TRNS ,KC_TRNS ,KC_TRNS
+                                                             ,RGB_TOG ,RGB_TOG
+                                                             ,RGB_TOG
+                                                             ,RGB_TOG ,RGB_MOD , RGB_SLD
 ),
 
 /******* Reverse Base Layer *********************************************************************************************
@@ -414,6 +414,20 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
         }
         break;
 
+        case Asig:
+        if (record->event.pressed) {
+            return MACRO( I(10), D(LSFT), T(COMM), U(LSFT), T(MINS), END  ); // <-
+        }
+        break;
+
+        case RGB_SLD:
+          if (record->event.pressed) {
+            rgblight_mode(1);
+          }
+          return false;
+          break;
+
+
         // mouse diagonals
 
         case MUL: // mouse up left
@@ -474,31 +488,107 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
 
 // Runs just one time when the keyboard initializes.
 void matrix_init_user(void) {
-
+  rgblight_enable();
 };
+
+
+typedef struct HsvColor
+{
+    unsigned char h;
+    unsigned char s;
+    unsigned char v;
+} HsvColor;
+
+HsvColor my_hsv;
+
+HsvColor RgbToHsv(unsigned char r, unsigned char g, unsigned char b, HsvColor hsv)
+{
+    unsigned char rgbMin, rgbMax;
+
+    rgbMin = r < g ? (r < b ? r : b) : (g < b ? g : b);
+    rgbMax = r > g ? (r > b ? r : b) : (g > b ? g : b);
+
+    hsv.v = rgbMax;
+    if (hsv.v == 0)
+    {
+        hsv.h = 0;
+        hsv.s = 0;
+        return hsv;
+    }
+
+    hsv.s = (255 * ((long)(rgbMax - rgbMin))) / hsv.v;
+    if (hsv.s == 0)
+    {
+        hsv.h = 0;
+        return hsv;
+    }
+
+    if (rgbMax == r)
+        hsv.h = 0 + 43 * (g - b) / (rgbMax - rgbMin);
+    else if (rgbMax == g)
+        hsv.h = 85 + 43 * (b - r) / (rgbMax - rgbMin);
+    else
+        hsv.h = 171 + 43 * (r - g) / (rgbMax - rgbMin);
+
+    return hsv;
+}
+
 
 // Runs constantly in the background, in a loop.
 void matrix_scan_user(void) {
+
+    unsigned char red, green, blue;
+
+
     // shift or caps lock turns on red light
     if((keyboard_report->mods & MOD_BIT(KC_LSFT))
     || (keyboard_report->mods & MOD_BIT(KC_RSFT))
     || (host_keyboard_leds() & (1<<USB_LED_CAPS_LOCK))) {
         ergodox_right_led_1_on();
+        red = 0xff;
     } else {
         ergodox_right_led_1_off();
+        red = 0x00;
     }
 
     // Symbol layer turns on green light
     if(layer_state & (1UL<<SYMB)) {
         ergodox_right_led_2_on();
+        green = 0xff;
     } else {
         ergodox_right_led_2_off();
+        green = 0x00;
     }
 
     // Media layer turns on blue light
     if(layer_state & (1UL<<MDIA)) {
         ergodox_right_led_3_on();
+        blue = 0xff;
     } else {
         ergodox_right_led_3_off();
+        blue = 0x00;
     }
+
+    // if all layers activated, turn off underlighting
+    if (red == 0xff && green == 0xff && blue == 0xff) {
+        red = 0x00;
+        green = 0x00;
+        blue = 0x00;
+    }
+
+    // if no layers activated, turn on white underlighting
+    else if (red == 0x00 && green == 0x00 && blue == 0x00) {
+        red = 0xff;
+        green = 0xff;
+        blue = 0xff;
+    }
+
+
+    #ifdef RGBLIGHT_ENABLE
+    my_hsv = RgbToHsv(red, green, blue, my_hsv);
+    rgblight_sethsv(my_hsv.h,my_hsv.s,my_hsv.v);
+    // rgblight_sethsv(0,255,255);
+    #endif
+
+
 };
