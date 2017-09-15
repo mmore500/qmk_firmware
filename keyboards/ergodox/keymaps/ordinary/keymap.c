@@ -422,7 +422,9 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
 
         case RGB_SLD:
           if (record->event.pressed) {
+            #ifdef RGBLIGHT_ENABLE
             rgblight_mode(1);
+            #endif
           }
           return false;
           break;
@@ -488,7 +490,9 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
 
 // Runs just one time when the keyboard initializes.
 void matrix_init_user(void) {
+  #ifdef RGBLIGHT_ENABLE
   rgblight_enable();
+  #endif
 };
 
 
