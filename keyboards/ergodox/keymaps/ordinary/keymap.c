@@ -541,6 +541,7 @@ HsvColor RgbToHsv(unsigned char r, unsigned char g, unsigned char b, HsvColor hs
 // Runs constantly in the background, in a loop.
 void matrix_scan_user(void) {
 
+  #ifdef RGBLIGHT_ENABLE
     unsigned char red, green, blue;
 
 
@@ -588,7 +589,6 @@ void matrix_scan_user(void) {
     }
 
 
-    #ifdef RGBLIGHT_ENABLE
     my_hsv = RgbToHsv(red, green, blue, my_hsv);
     rgblight_sethsv(my_hsv.h,my_hsv.s,my_hsv.v);
     // rgblight_sethsv(0,255,255);
