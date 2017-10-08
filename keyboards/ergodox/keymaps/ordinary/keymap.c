@@ -285,7 +285,7 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
         case LSymb:                                               //
         if (record->event.pressed) {                              // when the LSymb button is pressed
             if(++symb_shift > 2) symb_shift = 2;                  // increment the symb shift count, max two
-            if(spec_shift) symb_lock = !symb_lock;                // if the Special layer is on, toggle the shift lock
+            //if(spec_shift) symb_lock = !symb_lock;                // if the Special layer is on, toggle the shift lock
             layer_on(SYMB);                                       // in any case, turn on the Symbols layer
         } else {                                                  // when the LSymb button is released
             if(--symb_shift < 0) symb_shift = 0;                  // decrement the shift count, minimum zero
@@ -298,7 +298,7 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
            if (record->tap.count && (!mdia_shift) && (!mdia_lock) && (!spec_shift)) {
                 register_code(KC_TAB);
             } else {
-                if(spec_shift) mdia_lock = !mdia_lock;
+                //if(spec_shift) mdia_lock = !mdia_lock;
                 if(++mdia_shift > 2) mdia_shift = 2;
                 layer_on(MDIA);
             }
@@ -314,9 +314,9 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
 
         case LSpec:
         if (record->event.pressed) {                                     // when the LSpec button is pressed
-            if(symb_shift) symb_lock = !symb_lock;                       // if another layer button is engaged, then
-            else if(mdia_shift) mdia_lock = !mdia_lock;                  // lock that layer, be it caps or symb or mdia
-            else if (record->tap.count && !record->tap.interrupted && (!spec_shift)) {
+            //if(symb_shift) symb_lock = !symb_lock;                       // if another layer button is engaged, then
+            //else if(mdia_shift) mdia_lock = !mdia_lock;                  // lock that layer, be it caps or symb or mdia
+            if (record->tap.count && !record->tap.interrupted && (!spec_shift)) {
                 register_code(KC_GRV);                                   // otherwise, if it's an uninterrupted tap, emit a char
             } else {
                 if(++spec_shift > 2) spec_shift = 2;
@@ -338,7 +338,7 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
                 register_code(KC_QUOT);
             } else {
                 if(++symb_shift > 2) symb_shift = 2;
-                if(spec_shift) symb_lock = !symb_lock;
+                //if(spec_shift) symb_lock = !symb_lock;
                 layer_on(SYMB);
             }
         } else {
@@ -357,7 +357,7 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
                 register_code(KC_BSLS);
             } else {
                 if(++mdia_shift > 2) mdia_shift = 2;
-                if(spec_shift) mdia_lock = !mdia_lock;
+                //if(spec_shift) mdia_lock = !mdia_lock;
                 layer_on(MDIA);
             }
         } else {
@@ -372,9 +372,9 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
 
         case RSpec:
         if (record->event.pressed) {
-            if(symb_shift) symb_lock = !symb_lock;
-            else if(mdia_shift) mdia_lock = !mdia_lock;
-            else if (record->tap.count && !record->tap.interrupted && (!spec_shift)) {
+            //if(symb_shift) symb_lock = !symb_lock;
+            //else if(mdia_shift) mdia_lock = !mdia_lock;
+            if (record->tap.count && !record->tap.interrupted && (!spec_shift)) {
                 register_code(KC_EQL);
             } else {
                 if(++spec_shift > 2) spec_shift = 2;
