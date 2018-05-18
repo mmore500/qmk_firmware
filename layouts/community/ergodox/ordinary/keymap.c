@@ -1,4 +1,4 @@
-#include "ergodox.h"
+#include "ergodox_ez.h"
 #include "led.h"
 #include "mousekey.h"
 #include "debug.h"

@@ -93,7 +93,6 @@ endif
 CFLAGS += -Wall
 CFLAGS += -Wstrict-prototypes
 ifneq ($(strip $(ALLOW_WARNINGS)), yes)
-    CFLAGS += -Werror
 endif
 #CFLAGS += -mshort-calls
 #CFLAGS += -fno-unit-at-a-time
