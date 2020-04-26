@@ -574,6 +574,13 @@ void matrix_scan_user(void) {
         blue = 0x00;
     }
 
+    // Special layer turns on all light
+    if(layer_state & (1UL<<SPEC)) {
+        ergodox_right_led_1_on();
+        ergodox_right_led_2_on();
+        ergodox_right_led_3_on();
+    }
+
     // if all layers activated, turn off underlighting
     if (red == 0xff && green == 0xff && blue == 0xff) {
         red = 0x00;
