@@ -267,9 +267,9 @@ const uint16_t PROGMEM fn_actions[] = {
     ,[RSpec] = ACTION_MACRO_TAP(RSpec)
 };
 
-uint16_t symb_shift = 0;
-uint16_t mdia_shift = 0;
-uint16_t spec_shift = 0;
+int16_t symb_shift = 0;
+int16_t mdia_shift = 0;
+int16_t spec_shift = 0;
 
 bool mdia_lock = false;
 bool symb_lock = false;
