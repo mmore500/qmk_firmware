@@ -53,7 +53,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------------+------+------+------+------+-------------|       |------+------+------+------+------+------+------------|
  * | Media  Tab |   Q  |   W  |   E  |   R  |   T  |   [  |       |  ]   |   Y  |   U  |   I  |   O  |   P  | \|   Media |
  * |------------+------+------+------+------+------|      |       |      |------+------+------+------+------+------------|
- * | Symbol     |  ^A  |   S  |   D  |  ^F  |   G  |------|       |------|   H  |  ^J  |   K  |   L  |  ^;  | '"  Symbol |
+ * | Symbol ESC |  ^A  |   S  |   D  |  ^F  |   G  |------|       |------|   H  |  ^J  |   K  |   L  |  ^;  | '"  Symbol |
  * |------------+------+------+------+------+------|Shift |       | Tab  |------+------+------+------+------+------------|
  * | Capitals   |   Z  |   X  |   C  |   V  |   B  | -Tab |       |      |   N  |   M  |   ,  |   .  |  /   |   Capitals |
  * `------------+------+------+------+------+-------------'       `-------------+------+------+------+------+------------'
@@ -71,7 +71,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // left hand
  F(LSpec)  ,KC_1           ,KC_2   ,KC_3   ,KC_4  ,KC_5  ,KC_ESC
 ,F(LMdia)  ,KC_Q           ,KC_W   ,KC_E   ,KC_R  ,KC_T  ,KC_LBRC
-,M(LSymb)  ,LT(RBASE, KC_A),KC_S   ,KC_D   ,LT(RBASE, KC_F)  ,KC_G
+,F(LSymb)  ,LT(RBASE, KC_A),KC_S   ,KC_D   ,LT(RBASE, KC_F)  ,KC_G
 ,KC_LSFT   ,KC_Z           ,KC_X   ,KC_C   ,KC_V  ,KC_B  ,LSFT(KC_TAB)
 ,KC_LCTL   ,MEH_T(KC_NO)   ,ALL_T(KC_NO),KC_LGUI,KC_LALT
                                          ,KC_HOME,KC_END
@@ -95,7 +95,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |-----------+------+------+------+------+-------------|       |------+------+------+------+------+------+-----------|
  * |           |   !  |   @  |   {  |   }  |   &  |  <   |       |  >   |   |  |   7  |   8  |   9  |   /  |           |
  * |-----------+------+------+------+------+------|      |       |      |------+------+------+------+------+-----------|
- * |           |   #  |   $  |   (  |   )  |   `  |------|       |------|   /  |   4  |   5  |   6  |   *  |           |
+ * |       ESC |   #  |   $  |   (  |   )  |   `  |------|       |------|   /  |   4  |   5  |   6  |   *  |           |
  * |-----------+------+------+------+------+------|  '   |       |  "   |------+------+------+------+------+-----------|
  * |           |   %  |   ^  |   [  |   ]  |   ~  |      |       |      |   \  |   1  |   2  |   3  |   -  |           |
  * `-----------+------+------+------+------+-------------'       `-------------+------+------+------+------+-----------'
@@ -113,7 +113,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // left hand
  KC_TRNS ,KC_F1       ,KC_F2        ,KC_F3   ,KC_F4   ,KC_F5   ,KC_ESC
 ,KC_TRNS ,KC_EXLM     ,KC_AT        ,KC_LCBR ,KC_RCBR ,KC_AMPR ,LSFT(KC_COMM)
-,KC_TRNS ,KC_HASH     ,KC_DLR       ,KC_LPRN ,KC_RPRN ,KC_GRV
+,KC_ESC  ,KC_HASH     ,KC_DLR       ,KC_LPRN ,KC_RPRN ,KC_GRV
 ,KC_TRNS ,KC_PERC     ,KC_CIRC      ,KC_LBRC ,KC_RBRC ,KC_TILD ,KC_QUOT
 ,KC_SCLN ,KC_AMPR     ,KC_ASTR ,LSFT(KC_COMM),LSFT(KC_DOT)
                                                       ,M(GrtEq),M(LesEq)
@@ -137,7 +137,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+---------+---------+---------+---------+----------------|    |------+---------+---------+---------+---------+---------+------|
  * |      |Shut Down|MouseUpLf|Mouse Up |MouseUpRg|Volume Up|Scroll|    |Scroll|PrintScrn|   Home  |    Up   |   PgUp  |   Mail  |      |
  * |------+---------+---------+---------+---------+---------|  Up  |    |  Up  |---------+---------+---------+---------+---------+------|
- * |      |  Sleep  |MouseLeft|MouseDown|MouseRght|Volume Dn|------|    |------| Num Lock|   Left  |   Down  |   Right | MyComp  |      |
+ * |  ESC |  Sleep  |MouseLeft|MouseDown|MouseRght|Volume Dn|------|    |------| Num Lock|   Left  |   Down  |   Right | MyComp  |      |
  * |------+---------+---------+---------+---------+---------|Scroll|    |Scroll|---------+---------+---------+---------+---------+------|
  * |      |  ||||   |MouseDnLf|MouseDown|MouseDnRg|  Mute   | Down |    | Down |  ||||   |   End   |   Down  |   PgDn  |  ||||   |      |
  * `------+---------+---------+---------+---------+----------------'    `----------------+---------+---------+---------+---------+------'
@@ -153,11 +153,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [MDIA] = KEYMAP(
 // left hand
- KC_TRNS ,KC_F11   ,KC_F12  ,KC_F13   ,KC_F14  ,KC_F15  ,KC_ESC
-,KC_TRNS ,KC_NO    ,M(MUL)  ,KC_MS_U  ,M(MUR)  ,KC_VOLU ,KC_WH_U
-,KC_TRNS ,KC_ESC   ,KC_MS_L ,KC_MS_D  ,KC_MS_R ,KC_VOLD
-,KC_TRNS ,KC_NO    ,M(MDL)  ,KC_MS_D  ,M(MDR)  ,KC_MUTE ,KC_WH_D
-,KC_NO ,KC_NO   ,KC_BTN3 ,KC_BTN1  ,KC_BTN2
+ KC_TRNS ,KC_F1   ,KC_F12  ,KC_F13   ,KC_F14  ,KC_F15  ,KC_ESC
+,KC_TRNS ,KC_NO   ,M(MUL)  ,KC_MS_U  ,M(MUR)  ,KC_VOLU ,KC_WH_U
+,KC_ESC  ,KC_NO   ,KC_MS_L ,KC_MS_D  ,KC_MS_R ,KC_VOLD
+,KC_TRNS ,KC_NO   ,M(MDL)  ,KC_MS_D  ,M(MDR)  ,KC_MUTE ,KC_WH_D
+,KC_NO   ,KC_NO   ,KC_BTN3 ,KC_BTN1  ,KC_BTN2
                                                ,KC_WSTP ,KC_WREF
                                                         ,KC_WSCH
                                       ,KC_WBAK ,KC_NO   ,KC_WHOM
@@ -177,9 +177,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,-------------------------------------------------------.    ,-------------------------------------------------------.
  * |             |  Esc |      |      |      |      |      |    |      |      |      |      |   -  | Bspc |             |
  * |-------------+------+------+------+------+-------------|    |------+------+------+------+------+------+-------------|
- * | Media Lock  |      |      |      |      |      |      |    |      |      |      |      |  [   |   ]  | Media Lock  |
+ * |             |      |      |      |      |      |      |    |      |      |      |      |  [   |   ]  |             |
  * |-------------+------+------+------+------+------|      |    |      |------+------+------+------+------+-------------|
- * | Symbol Lock |      |      |      |      |      |------|    |------|      |      |      |      |      | Symbol Lock |
+ * | ESC         |      |      |      |      |      |------|    |------|      |      |      |      |      |             |
  * |-------------+------+------+------+------+------|      |    |      |------+------+------+------+------+-------------|
  * | Caps Lock   |      |      |      |      |      |      |    |      |      |      |      |      |      | Caps Lock   |
  * `-------------+------+------+------+------+-------------'    `-------------+------+------+------+------+-------------'
@@ -197,7 +197,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // left hand
  KC_TRNS ,KC_ESC  ,KC_TRNS ,KC_TRNS ,KC_TRNS ,KC_TRNS ,KC_TRNS
 ,KC_TRNS ,KC_TRNS ,KC_TRNS ,KC_TRNS ,KC_TRNS ,KC_TRNS ,KC_TRNS
-,KC_TRNS ,KC_TRNS ,KC_TRNS ,KC_TRNS ,KC_TRNS ,KC_TRNS
+,KC_ESC  ,KC_TRNS ,KC_TRNS ,KC_TRNS ,KC_TRNS ,KC_TRNS
 ,KC_CAPS ,KC_TRNS ,KC_TRNS ,KC_TRNS ,KC_TRNS ,KC_TRNS ,KC_TRNS
 ,KC_TRNS ,KC_TRNS ,KC_TRNS ,KC_TRNS ,KC_TRNS
                                              ,RGB_TOG ,RGB_TOG
@@ -221,7 +221,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------------+------+------+------+------+-------------|       |------+------+------+------+------+------+------------|
  * |    \|      |   P  |   O  |   I  |   U  |   Y  |   ]  |       |  [   |   T  |   R  |   E  |   W  |   Q  |    Tab     |
  * |------------+------+------+------+------+------|      |       |      |------+------+------+------+------+------------|
- * |    '"      |   ;  |   L  |   K  |   J  |   H  |------|       |------|   G  |   F  |   D  |   S  |  A   |            |
+ * |    '"      |   ;  |   L  |   K  |   J  |   H  |------|       |------|   G  |   F  |   D  |   S  |  A   |    ESC     |
  * |------------+------+------+------+------+------| Tab  |       |Shift |------+------+------+------+------+------------|
  * | Capitals   |   /  |   .  |   ,  |   M  |   N  |      |       | -Tab |   B  |   V  |   C  |   X  |  Z   |   Capitals |
  * `------------+------+------+------+------+-------------'       `-------------+------+------+------+------+------------'
@@ -248,7 +248,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                                   // right hand
                                                                  ,KC_ESC      ,KC_5   ,KC_4   ,KC_3   ,KC_2    ,KC_1  ,KC_GRV
                                                                  ,KC_LBRC     ,KC_T   ,KC_R   ,KC_E   ,KC_W    ,KC_Q  ,KC_TAB
-                                                                              ,KC_G   ,LT(RBASE, KC_F),KC_D   ,KC_S   ,LT(RBASE, KC_A)  ,KC_NO
+                                                                              ,KC_G   ,LT(RBASE, KC_F),KC_D   ,KC_S   ,LT(RBASE, KC_A)  ,KC_ESC
                                                                  ,LSFT(KC_TAB),KC_B   ,KC_V   ,KC_C   ,KC_X    ,KC_Z  ,KC_LSFT
                                                                                       ,KC_LGUI,KC_LALT,KC_HYPR ,KC_MEH,KC_LCTL
                                                                  ,KC_HOME     ,KC_END
@@ -282,14 +282,22 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
         // only because sometimes rapid pressing led to irregular events; this way the states
         // are self healing during use.
 
-        case LSymb:                                               //
-        if (record->event.pressed) {                              // when the LSymb button is pressed
-            if(++symb_shift > 2) symb_shift = 2;                  // increment the symb shift count, max two
-            //if(spec_shift) symb_lock = !symb_lock;                // if the Special layer is on, toggle the shift lock
-            layer_on(SYMB);                                       // in any case, turn on the Symbols layer
-        } else {                                                  // when the LSymb button is released
-            if(--symb_shift < 0) symb_shift = 0;                  // decrement the shift count, minimum zero
-            if((!symb_shift) && (!symb_lock)) layer_off(SYMB);    // if both shifts are released and the lock is off, turn off the Symbols layer
+        case LSymb:
+        if (record->event.pressed) {
+           if (record->tap.count && (!symb_shift) && (!symb_lock) && (!spec_shift)) {
+                register_code(KC_ESC);
+            } else {
+                //if(spec_shift) symb_lock = !symb_lock;
+                if(++symb_shift > 2) symb_shift = 2;
+                layer_on(SYMB);
+            }
+        } else {
+            if(record->tap.count && (!symb_shift) && (!symb_lock) && (!spec_shift)) {
+                unregister_code(KC_ESC);
+            } else {
+                if(--symb_shift < 0) symb_shift = 0;
+                if((!symb_shift) && (!symb_lock)) layer_off(SYMB);
+            }
         }
         break;
 
